@@ -1,0 +1,15 @@
+let router = [{
+        path: '/ComB/Service',
+        component: 'components/ComB/service',
+        exatct: true,
+        authorazation: true
+    },
+    {
+        path: '/ComB/About',
+        component: 'components/ComB/About',
+        exatct: true,
+        authorazation: true
+    }
+]
+
+export default router
