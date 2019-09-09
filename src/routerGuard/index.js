@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Route} from "react-router-dom";
+import {Route, withRouter} from "react-router-dom";
 import Loadable from "utils/loadable";
 
 class RouterGuard extends Component {
@@ -9,19 +9,23 @@ class RouterGuard extends Component {
         this.renderFunc = this.renderFunc.bind(this)
     }
     renderFunc() {
-        if(!this.props.authorazation) {
+        console.log(this.props.path)
+        if(!this.props.authorazation || (localStorage.getItem("status") && !this.props.path.match("/Login"))) {
             return (
                 <Loadable component={this.props.component}></Loadable>
             )
         }
-        if(!localStorage.getItem("status") && !this.props.path.match("/Login")) {
-            return (
-                <Loadable component="components/Login"></Loadable>
-            )
-        }
         if(localStorage.getItem("status") && this.props.path.match("/Login")) {
             return (
-                <Loadable component="components/home"></Loadable>
+                <Loadable component="home"></Loadable>
+            )
+        }
+        if(!localStorage.getItem("status") && !this.props.path.match("/Login")) {
+            this.props.history.push("/Login")
+        }
+        if(!localStorage.getItem("status") && this.props.path.match("/Login")) {
+            return (
+                <Loadable component="Login"></Loadable>
             )
         }
     }
@@ -32,4 +36,4 @@ class RouterGuard extends Component {
     }
 }
 
-export default RouterGuard
+export default withRouter(RouterGuard)

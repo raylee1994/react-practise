@@ -1,12 +1,13 @@
-let router = [{
+let router = [
+    {
         path: '/ComB/Service',
-        component: 'components/ComB/service',
+        component: 'ComB/service',
         exact: true,
         authorazation: true
     },
     {
         path: '/ComB/About',
-        component: 'components/ComB/about',
+        component: 'ComB/about',
         exact: true,
         authorazation: true
     }

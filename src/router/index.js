@@ -1,31 +1,31 @@
 let router = [
     {
         path: "/",
-        component: "components/home",
+        component: "home",
         exact: true,
         authorazation: false
     },
     {
         path: "/ComA",
-        component: "components/ComA",
+        component: "comA",
         exact: false,
         authorazation: true
     },
     {
         path: "/ComB",
-        component: "components/ComB",
+        component: "comB",
         exact: false,
         authorazation: true
     },
     {
         path: "/Detail/:id",
-        component: "components/Detail",
+        component: "Detail",
         exact: false,
         authorazation: true
     },
     {
         path: "/Login",
-        component: "components/Login",
+        component: "Login",
         exact: false,
         authorazation: true
     }

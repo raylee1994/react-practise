@@ -18,8 +18,8 @@ class Login extends Component {
     render() {
         return (
             <React.Fragment>
-                <a href="javascript:;" onclick={this.login}>登录</a>
-                <a href="javascript:;" onclick={this.logout}>退出</a>
+                <a href="javascript:;" onClick={this.login}>登录</a>
+                <a href="javascript:;" onClick={this.logout}>退出</a>
             </React.Fragment>
         )
     }
