@@ -1,5 +1,6 @@
 import React,{Component} from "react"
 import {withRouter} from "react-router-dom"
+import eventbus from "utils/EventBus"
 
 class Login extends Component {
     constructor(props) {
@@ -9,11 +10,13 @@ class Login extends Component {
     }
     login() {
         localStorage.setItem("status", 1)
+        eventbus.emit("login", localStorage.getItem("status"))
         this.props.history.push("/")
     }
     logout() {
         localStorage.removeItem("status")
-        document.referrer ? window.history.back() : this.props.history.push("/")
+        eventbus.emit("logout", localStorage.getItem("status"))
+        this.props.history.push("/")
     }
     render() {
         return (

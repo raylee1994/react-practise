@@ -1,12 +1,12 @@
 import React,{Component} from "react";
 import Loadable from "react-loadable";
+import {withRouter} from "react-router-dom";
 
 function Loading(props) {
-    console.log(props)
     if (props.error) {
-      return <div>Error! <button onClick={ props.retry }>Retry</button></div>;
+      return <div>Error!</div>;
     } else if (props.timedOut) {
-      return <div>Taking a long time... <button onClick={ props.retry }>Retry</button></div>;
+      return <div>Taking a long time... </div>;
     } else if (props.pastDelay) {
       return <div>Loading...</div>;
     } else {
@@ -30,4 +30,4 @@ class ComponentLoadable extends Component {
     }
 }
 
-export default ComponentLoadable
+export default withRouter(ComponentLoadable)

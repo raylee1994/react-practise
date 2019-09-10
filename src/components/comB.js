@@ -2,14 +2,25 @@ import React,{Component} from "react"
 import {Link, Switch} from "react-router-dom"
 import routes from 'router/ComBChildRouter';
 import RouterGuard from 'routerGuard';
+import {withRouter} from "react-router-dom";
 
 class ComB extends Component {
+    constructor(props) {
+        super(props)
+        this.switchNews = this.switchNews.bind(this)
+    }
+    switchNews(id) {
+        var _ts = this
+        return function() {
+            _ts.props.history.push(`/Detail/${id}`)
+        }
+    }
     render() {
         return (
             <React.Fragment>
                 <ul>
-                    <li><Link to="/Detail/1">news 1</Link></li>
-                    <li><Link to="/Detail/2">news 2</Link></li>
+                    <li onClick={this.switchNews(1)}>news 1</li>
+                    <li onClick={this.switchNews(2)}>news 2</li>
                 </ul>
                 <ul>
                     {
@@ -34,4 +45,4 @@ class ComB extends Component {
     }
 }
 
-export default ComB
+export default withRouter(ComB)

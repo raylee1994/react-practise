@@ -5,21 +5,19 @@ import Loadable from "utils/loadable";
 class RouterGuard extends Component {
     constructor(props) {
         super(props)
-        this.props.authorazation && this.checkStatus()
         this.renderFunc = this.renderFunc.bind(this)
     }
     renderFunc() {
-        console.log(this.props.path)
-        if(!this.props.authorazation || (localStorage.getItem("status") && !this.props.path.match("/Login"))) {
+        if(!this.props.authorazation || localStorage.getItem("status")) {
             return (
                 <Loadable component={this.props.component}></Loadable>
             )
         }
-        if(localStorage.getItem("status") && this.props.path.match("/Login")) {
+        /* if(localStorage.getItem("status") && this.props.path.match("/Login")) {
             return (
                 <Loadable component="home"></Loadable>
             )
-        }
+        } */
         if(!localStorage.getItem("status") && !this.props.path.match("/Login")) {
             this.props.history.push("/Login")
         }
