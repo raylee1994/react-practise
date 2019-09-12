@@ -7,17 +7,13 @@ class RouterGuard extends Component {
         super(props)
         this.renderFunc = this.renderFunc.bind(this)
     }
+    // enter
     renderFunc() {
         if(!this.props.authorazation || localStorage.getItem("status")) {
             return (
                 <Loadable component={this.props.component}></Loadable>
             )
         }
-        /* if(localStorage.getItem("status") && this.props.path.match("/Login")) {
-            return (
-                <Loadable component="home"></Loadable>
-            )
-        } */
         if(!localStorage.getItem("status") && !this.props.path.match("/Login")) {
             this.props.history.push("/Login")
         }
@@ -26,6 +22,10 @@ class RouterGuard extends Component {
                 <Loadable component="Login"></Loadable>
             )
         }
+    }
+    // leave
+    componentWillUnmount() {
+        console.log(1)
     }
     render() {
         return (

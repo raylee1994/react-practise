@@ -24,9 +24,9 @@ class ComB extends Component {
                 </ul>
                 <ul>
                     {
-                        routes.map((item) => {
+                        routes.map((item, index) => {
                             return (
-                                <li><Link to={item.path}>{item.path}</Link></li>
+                                <li><Link to={item.path} key={index}>{item.path}</Link></li>
                             )
                         })
                     }

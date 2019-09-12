@@ -11,9 +11,9 @@ function App() {
           <GlobalNav></GlobalNav>
           <Switch>
           {
-            routes.map((item) => {
+            routes.map((item, index) => {
               return (
-                <RouterGuard {...item}></RouterGuard>
+                <RouterGuard {...item} key={index}></RouterGuard>
               )
             })
           }

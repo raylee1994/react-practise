@@ -13,6 +13,12 @@ EventBus.prototype.on = function(type, func) {
     this.events[type] = this.events[type] || []
     this.events[type].push(func)
 }
+EventBus.prototype.off = function(type) {
+    if(!this.event[type]) {
+        return
+    }
+    delete this.event[type]
+}
 
 const eventbus = new EventBus()
 export default eventbus
